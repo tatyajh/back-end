@@ -1,68 +1,72 @@
 const userModel = require('../models/users');
 
-const modelToDto = (user) => ({
-  id: user.id,
-  name: user.name,
-  username: user.username,
-  email: user.email,
-  address: {
-    street: user.addressStreet,
-    suite: user.addressSuite,
-    city: user.addressCity,
-    zipcode: user.addressZipcode,
-    geo: {
-      lat: user.addressGeoLat,
-      lng: user.addressGeoLng,
-    },
-  },
-  phone: user.phone,
-  website: user.website,
-  company: {
-    name: user.companyName,
-    catchPhrase: user.companyCatchPhrase,
-    bs: user.companyBs,
-  },
+const modelToDto = (delivery) => ({
+  id: delivery.id,
+  nameSet: delivery.nameSet,
+  identSet: delivery.identSet,
+  emailSet: delivery.emailSet,
+  phoneSet: delivery.phoneSet,
+  addressStreetSet: delivery.addressStreetSet,
+  addressNumberSet: delivery.addressNumberSet,
+  addressCitySet: delivery.addressCitySet,
+  datePickup: delivery.datePickup,
+  hourPickup: delivery.hourPickup,
+  width: delivery.width,
+  hight: delivery.hight,
+  weigh: delivery.weigh,
+  nameGet: delivery.nameGet,
+  identGet: delivery.identGet,
+  phoneGet: delivery.phoneGet,
+  addresstreetGet: delivery.addresstreetGet,
+  addressnumberGet: delivery.addressnumberGet,
+  addressCityGet: delivery.addressCityGet,
+  status: delivery.status,
 });
 
-const dtoToModel = (userDto) => ({
-  ...(!!userDto.id ? { id: userDto.id } : {}),
-  name: userDto.name,
-  username: userDto.username,
-  email: userDto.email,
-  addressStreet: userDto.address.street,
-  addressSuite: userDto.address.suite,
-  addressCity: userDto.address.city,
-  addressZipcode: userDto.address.zipcode,
-  addressGeoLat: userDto.address.geo.lat,
-  addressGeoLng: userDto.address.geo.lng,
-  phone: userDto.phone,
-  website: userDto.website,
-  companyName: userDto.company.name,
-  companyCatchPhrase: userDto.company.catchPhrase,
-  companyBs: userDto.company.bs,
+const dtoToModel = (deliveryDto) => ({
+  ...(!!userDto.id ? { id: deliveryDto.id } : {}),
+  nameSet: deliveryDto.nameSet,
+  identSet: deliveryDto.identSet,
+  emailSet: deliveryDto.emailSet,
+  phoneSet: deliveryDto.phoneSet,
+  addressStreetSet: deliveryDto.addressStreetSet,
+  addressNumberSet: deliveryDto.addressNumberSet,
+  addressCitySet: deliveryDto.addressCitySet,
+  datePickup: deliveryDto.datePickup,
+  hourPickup: deliveryDto.hourPickup,
+  width: deliveryDto.width,
+  hight: deliveryDto.hight,
+  weigh: deliveryDto.weigh,
+  nameGet: deliveryDto.nameGet,
+  identGet: deliveryDto.identGet,
+  phoneGet: deliveryDto.phoneGet,
+  addresstreetGet: deliveryDto.addresstreetGet,
+  addressnumberGet: deliveryDto.addressnumberGet,
+  addressCityGet: deliveryDto.addressCityGet,
+  status: deliveryDto.status,
 });
 
 const get = async () => {
-  const result = await userModel.get();
-  return result.map((user) => modelToDto(user));
+  const result = await delioveryModel.get();
+  return result.map((delivery) => modelToDto(user));
 };
 
-const create = async (user) => {
-  return await userModel.create(dtoToModel(user));
+const create = async (delivery) => {
+  return await deliveryModel.create(dtoToModel(user));
 };
 
-const update = async (user) => {
-  if (!user.id) {
+const update = async (delivery) => {
+  if (!delivery.id) {
     return 'The id is mandatory';
   }
-  return await userModel.update(dtoToModel(user));
+  return await deliveryModel.update(dtoToModel(user));
 };
 
 const remove = async (id) => {
-  if (!user.id) {
+  if (!delivery.id) {
     return 'The id is mandatory';
   }
-  return await userModel.remove(id);
+  return await deliveryModel.remove(id);
 };
 
 module.exports = {
