@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const userService = require('../services/users');
+const deliveryService = require('../services/users');
 
 router.get('/', async (_req, res, next) => {
   try {
-    const result = await userService.get();
+    const result = await deliveryService.get();
     res.json(result);
   } catch (error) {
     console.error('Error getting the users.', error);
@@ -15,7 +15,7 @@ router.get('/', async (_req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     const data = { ...req.body };
-    const result = await userService.create(data);
+    const result = await deliveryService.create(data);
     res.json(result);
   } catch (error) {
     console.error('Error creating a user.', error);
@@ -26,7 +26,7 @@ router.post('/', async (req, res, next) => {
 router.put('/:id', async (req, res, next) => {
   try {
     const data = { ...req.params, ...req.body };
-    const result = await userService.update(data);
+    const result = await deliveryService.update(data);
     res.json(result);
   } catch (error) {
     console.error('Error creating a user.', error);
@@ -37,7 +37,7 @@ router.put('/:id', async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
   try {
     const data = { ...req.params };
-    const result = await userService.remove(data.id);
+    const result = await deliveryService.remove(data.id);
     res.json(result);
   } catch (error) {
     console.error('Error creating a user.', error);

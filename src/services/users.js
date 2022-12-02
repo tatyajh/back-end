@@ -1,4 +1,4 @@
-const userModel = require('../models/users');
+const deliveryModel = require('../models/users');
 
 const modelToDto = (delivery) => ({
   id: delivery.id,
@@ -24,7 +24,7 @@ const modelToDto = (delivery) => ({
 });
 
 const dtoToModel = (deliveryDto) => ({
-  ...(!!userDto.id ? { id: deliveryDto.id } : {}),
+  ...(!!deliveryDto.id ? { id: deliveryDto.id } : {}),
   nameSet: deliveryDto.nameSet,
   identSet: deliveryDto.identSet,
   emailSet: deliveryDto.emailSet,
@@ -47,19 +47,19 @@ const dtoToModel = (deliveryDto) => ({
 });
 
 const get = async () => {
-  const result = await delioveryModel.get();
-  return result.map((delivery) => modelToDto(user));
+  const result = await deliveryModel.get();
+  return result.map((delivery) => modelToDto(delivery));
 };
 
 const create = async (delivery) => {
-  return await deliveryModel.create(dtoToModel(user));
+  return await deliveryModel.create(dtoToModel(delivery));
 };
 
 const update = async (delivery) => {
   if (!delivery.id) {
     return 'The id is mandatory';
   }
-  return await deliveryModel.update(dtoToModel(user));
+  return await deliveryModel.update(dtoToModel(delivery));
 };
 
 const remove = async (id) => {

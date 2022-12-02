@@ -12,7 +12,7 @@ var corsConfig = {
 
 app.use(cors(corsConfig));
 app.use(express.json());
-app.use('/users', userRoutes);
+app.use('/delivery', userRoutes);
 app.get('/ping', (req, res) => res.json('pong!'));
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log(`Running server on port ${PORT}`));

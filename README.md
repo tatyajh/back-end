@@ -21,7 +21,7 @@ The database scripts example (remember to change YOUR_DATABASE_NAME, YOUR_USER a
 CREATE DATABASE YOUR_DATABASE_NAME;
 CREATE USER 'YOUR_USER'@'%' IDENTIFIED BY 'YOUR_PASSWORD';
 GRANT ALL PRIVILEGES ON YOUR_DATABASE_NAME.* TO 'YOUR_USER'@'%';
-CREATE TABLE users (
+CREATE TABLE delivery (
      id	int(11) Auto Increment
      nameSet	varchar(255) NULL
      identSet	varchar(255) NULL

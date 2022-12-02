@@ -3,5 +3,5 @@ exports.dbConfig = {
   database: 'delivery_taj',
   user: 'tatyajh',
   password: process.env.DB_PASSWORD,
-  port: 3001
+  port: 3306
 };
